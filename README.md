@@ -34,3 +34,16 @@ const nextConfig = {
 
 module.exports = nextConfig
 ```
+
+### styled-componentsの事前設定
+SSGのみを使う場合、next.comfig.jsに以下の記述をするだけでよい。  
+```
+```sample.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  compiler: {
+    styledComponents: true,
+  }
+}
+```
