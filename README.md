@@ -37,13 +37,49 @@ module.exports = nextConfig
 
 ### styled-componentsの事前設定
 SSGのみを使う場合、next.comfig.jsに以下の記述をするだけでよい。  
-```
+
 ```sample.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   compiler: {
     styledComponents: true,
+  }
+}
+```
+
+SSRも使う場合は、↑に加えてpages/_document.tsxに以下の記述が必要。  
+```_document.tsx
+import Document, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document'
+import { ServerStyleSheet } from 'styled-components'
+
+export default class MyDocument extends Document {
+  static async getInitialProps(
+    ctx: DocumentContext,
+  ): Promise<DocumentInitialProps> {
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
+
+    try {
+      ctx.renderPage = () => 
+        originalRenderPage({
+          enhanceApp: (App) => (props) => 
+            sheet.collectStyles(<App {...props} />),
+        });
+      const initialProps = await Document.getInitialProps(ctx);
+
+      return {
+        ...initialProps,
+        styles: [
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ]
+      }
+    } finally {
+      sheet.seal();
+    }
   }
 }
 ```
