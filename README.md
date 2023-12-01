@@ -19,3 +19,18 @@ baseUrlと併用して、baseUrl の基準に対して相対的なエイリア�
   }
 }
 ```
+
+### next.config.js
+Next.jsプロジェクトの設定を行うファイル。  
+styled-componentsの有効化や、環境変数の設定はここで行う。  
+```sample.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  compiler: {
+    styledComponents: true,
+  }
+}
+
+module.exports = nextConfig
+```
