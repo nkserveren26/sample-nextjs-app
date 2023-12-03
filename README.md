@@ -130,6 +130,16 @@ ESlintを導入することで、単純な構文エラーやプロジェクト�
 }
 ```
 
+lintコマンドの実行で以下のエラーが出た場合  
+```
+Failed to load config "prettier" to extend from.
+```
+
+eslint-config-prettierライブラリが存在しないことが原因なので、これをインストールする。  
+```
+npm install --save-dev eslint-config-prettier
+```
+
 <br>
 
 ## Prettier
