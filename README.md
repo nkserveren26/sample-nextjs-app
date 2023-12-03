@@ -130,6 +130,27 @@ ESlintを導入することで、単純な構文エラーやプロジェクト�
 }
 ```
 
+lintコマンドを実行するとコードチェックが実行され、ソースコードの問題が列挙される。  
+これらの問題を修正するには、以下のコマンドを実行する。  
+　next lint --fix --dir src  
+
+package.jsonでエイリアスを定義して使うことも可能。  
+```sample.json
+{
+  "name": "sample-next-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint --dir src",
+    "format": "next lint --fix --dir src"
+  },
+  ...
+}
+```
+
 lintコマンドの実行で以下のエラーが出た場合  
 ```
 Failed to load config "prettier" to extend from.
