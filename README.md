@@ -108,7 +108,27 @@ export default class MyDocument extends Document {
 ## ESLint
 JavaScriptやTypeScriptなどの静的解析ツール。  
 ESlintを導入することで、単純な構文エラーやプロジェクト固有のコーディング規約を定義することができる。  
-厳密なルールを定義することで、複数人で開発する場合でもシステム全体のコードの一貫性を維持することができる。
+厳密なルールを定義することで、複数人で開発する場合でもシステム全体のコードの一貫性を維持することができる。  
+
+コードのチェックはnext lintコマンドで実行される。  
+　オプション無しの場合、pages, components, lib以下のファイルが対象となる。  
+　--dirオプションでディレクトリを指定すると、そのディレクトリ配下の全ファイルが対象となる。
+
+実際に使う時は、package.jsonにlintコマンドの定義を記載する。  
+```sample.json
+{
+  "name": "sample-next-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint --dir src"
+  },
+  ...
+}
+```
 
 <br>
 
