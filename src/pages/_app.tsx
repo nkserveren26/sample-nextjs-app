@@ -1,6 +1,6 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
-import { createGlobalStyle } from 'styled-components'
+import "@/styles/globals.css"
+import type { AppProps } from "next/app"
+import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
 html,
@@ -26,13 +26,12 @@ a {
 ol, ul {
   list-style: none;
 }
-`;
-
+`
 
 export default function App({ Component, pageProps }: AppProps) {
-  return 
-    <>
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </>
+  return
+  ;<>
+    <GlobalStyle />
+    <Component {...pageProps} />
+  </>
 }
