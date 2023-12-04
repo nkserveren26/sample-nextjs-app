@@ -15,5 +15,7 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
+  //静的ファイルが配置されているディレクトリを指定するオプション
+  staticDirs: ["public"]
 };
 export default config;
