@@ -171,3 +171,25 @@ Prettierは異なる開発者やチームが異なるスタイルでコードを
 ESLintと役割が被っているように見えるが、両者の使い方としては以下のようになると考える。  
 　コードの規則をチェックしてバグを拾う→ESLint
 　フォーマットを整える→Prettier
+
+## as const（const アサーション）
+全ての値を読み取り専用（変更不可）にするアサーション。  
+ネストしたオブジェクトも読み取り専用となる。  
+
+```sample.ts
+import colors from "./colors";
+import fontSizes from "./fontSizes";
+import letterSpacings from "./letterSpacings";
+import lineHeights from "./lineHeights";
+import space from "./space";
+
+export const theme = {
+    space,
+    fontSizes,
+    letterSpacings,
+    lineHeights,
+    colors
+} as const
+```
+
+constアサーションしたオブジェクトや配列に対して、各プロパティ（配列の場合は各要素）の値を変更しようとするとエラーになる。  
